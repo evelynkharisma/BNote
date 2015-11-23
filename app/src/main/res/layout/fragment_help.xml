@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="HELP"
+        android:text="@string/fragment_help"
         android:textSize="40dp"
         android:textStyle="bold"
         android:textAlignment="center"

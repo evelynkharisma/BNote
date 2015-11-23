@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.navButton) {
-            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.openDrawer(GravityCompat.START);
+            //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            //drawer.openDrawer(GravityCompat.START);
             return true;
         }
 
