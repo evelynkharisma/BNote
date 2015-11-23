@@ -11,6 +11,7 @@
     tools:context="com.segid.bnote.MainActivity"
     tools:background="@color/bnote_background">
 
+
     <ScrollView
         android:id="@+id/verticalScrollView"
         android:layout_width="fill_parent"
