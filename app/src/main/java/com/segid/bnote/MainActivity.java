@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = null;
 
         /*  FRAGMENT
-        MainFragment fragment = new MainFragment();
+        HelpFragment fragment = new HelpFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container , fragment);
         fragmentTransaction.commit();
-        */
+*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -127,7 +127,10 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         }
         else if (id == R.id.nav_help) {
-            // Handle the camera action
+            HelpFragment fragment = new HelpFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container , fragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_support) {
 
         } else if (id == R.id.nav_sharing) {

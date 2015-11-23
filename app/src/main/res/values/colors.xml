@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="bnote_yellow">#FBD817</color>
     <color name="bnote_purple">#592F65</color>
+    <color name="bnote_gray">#999182</color>
     <color name="bnote_background">#E4E0D7</color>
     <color name="bnote_transparent_background">#00E4E0D7</color>
 </resources>
