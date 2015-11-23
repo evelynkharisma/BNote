@@ -31,15 +31,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = null;
         Toolbar toolbar = null;
 
-        /*  FRAGMENT
-        HelpFragment fragment = new HelpFragment();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container , fragment);
-        fragmentTransaction.commit();
-*/
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        
+
         populateButtons();
     }
 
@@ -122,14 +116,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.navButton) {
-            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
+        /*if (id == R.id.nav_period1){
+            Semester1Fragment fragment = new Semester1Fragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
         }
-        else if (id == R.id.nav_help) {
+        else*/
+        if (id == R.id.nav_help) {
             HelpFragment fragment = new HelpFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container , fragment);
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_support) {
 
