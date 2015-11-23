@@ -1,5 +1,6 @@
 package com.segid.bnote;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Space;
@@ -64,10 +66,17 @@ public class MainActivity extends AppCompatActivity
             {
                 Button folderButton = new Button(this);
                 folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icons30, 0, 0, 0);
-                folderButton.setText("      FOLDER"+row);
+                folderButton.setText("      FOLDER" + row);
                 folderButton.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
                 folderButton.setGravity(Gravity.LEFT);
                 folderButton.setGravity(Gravity.CENTER_VERTICAL);
+
+                folderButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, NotesList.class);
+                        startActivity(intent);
+                    }
+                });
                 tableRow.addView(folderButton);
             }
             Space rowSpace = new Space(this);
