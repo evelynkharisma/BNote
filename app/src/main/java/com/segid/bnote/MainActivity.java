@@ -1,6 +1,7 @@
 package com.segid.bnote;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity
 
     private void populateButtons() {
         TableLayout table = (TableLayout) findViewById(R.id.folderButtonTable);
+
         for (int row=0; row < NUM_ROWS; row++){
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity
             {
                 Button folderButton = new Button(this);
                 folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icons30, 0, 0, 0);
-                folderButton.setText("      FOLDER" + row);
+                folderButton.setText("      FOLDER " + row);
                 folderButton.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
                 folderButton.setGravity(Gravity.LEFT);
                 folderButton.setGravity(Gravity.CENTER_VERTICAL);
@@ -79,6 +81,13 @@ public class MainActivity extends AppCompatActivity
                 });
                 tableRow.addView(folderButton);
             }
+
+            View line = new View(this);
+            TableRow.LayoutParams separatorLayoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 2);
+            separatorLayoutParams.setMargins(100, 0, 0, 0);
+            line.setBackgroundColor(Color.GRAY);
+            table.addView(line, separatorLayoutParams);
+
             Space rowSpace = new Space(this);
             rowSpace.setMinimumHeight(20);
             table.addView(rowSpace);
