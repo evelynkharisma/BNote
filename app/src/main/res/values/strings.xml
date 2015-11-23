@@ -30,4 +30,6 @@
     <string name="text_view_subject">Subject:</string>
     <string name="text_view_message">Message:</string>
     <string name="recommendation">Recommend B-Notes to your friends:</string>
+    <string name="title_activity_notes_list">NotesList</string>
+    <string name="title_activity_open_note">OpenNote</string>
 </resources>
