@@ -1,6 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.segid.bnote.HelpFragment">
+    android:layout_height="match_parent" tools:context="com.segid.bnote.HelpFragment"
+    android:background="@color/bnote_background">
 
     <TextView
         android:layout_width="fill_parent"
@@ -10,5 +11,6 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:layout_marginTop="20dp"/>
+
 
 </FrameLayout>
