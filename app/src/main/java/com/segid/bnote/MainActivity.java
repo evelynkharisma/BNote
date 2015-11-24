@@ -1,7 +1,5 @@
 package com.segid.bnote;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,33 +7,27 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Space;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int NUM_ROWS = 10;
-    private static final int NUM_COLS = 1;
     DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        ImageButton drawerButton = (ImageButton) findViewById(R.id.navButton);
 
         NavigationView navigationView = null;
         Toolbar toolbar = null;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Semester1Fragment fragment = new Semester1Fragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,47 +43,6 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        populateButtons();
-    }
-
-    private void populateButtons() {
-        TableLayout table = (TableLayout) findViewById(R.id.folderButtonTable);
-
-        for (int row=0; row < NUM_ROWS; row++){
-            TableRow tableRow = new TableRow(this);
-            table.addView(tableRow);
-            tableRow.setLayoutParams(new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT, 100
-            ));
-            for(int column=0; column < NUM_COLS; column++)
-            {
-                Button folderButton = new Button(this);
-                folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icons30, 0, 0, 0);
-                folderButton.setText("      FOLDER " + row);
-                folderButton.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
-                folderButton.setGravity(Gravity.LEFT);
-                folderButton.setGravity(Gravity.CENTER_VERTICAL);
-
-                folderButton.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MainActivity.this, NotesList.class);
-                        startActivity(intent);
-                    }
-                });
-                tableRow.addView(folderButton);
-            }
-
-            View line = new View(this);
-            TableRow.LayoutParams separatorLayoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 2);
-            separatorLayoutParams.setMargins(100, 0, 0, 0);
-            line.setBackgroundColor(Color.GRAY);
-            table.addView(line, separatorLayoutParams);
-
-            Space rowSpace = new Space(this);
-            rowSpace.setMinimumHeight(20);
-            table.addView(rowSpace);
-        }
     }
 
     @Override

@@ -60,7 +60,7 @@ public class SupportFragment extends Fragment{
 
 
 
-        return inflater.inflate(R.layout.fragment_help, container, false);
+        return inflater.inflate(R.layout.fragment_support, container, false);
     }
 
 }
