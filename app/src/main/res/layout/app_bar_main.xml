@@ -19,7 +19,7 @@
             <ImageButton
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/navButton"
+                android:id="@+id/navButtonOpen"
                 android:background="@drawable/icons12"
                 android:clickable="true"
                 android:layout_marginTop="15dp"

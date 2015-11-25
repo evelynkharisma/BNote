@@ -14,9 +14,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 
-public class Semester1Fragment extends Fragment {
+public class SemesterFragment extends Fragment {
 
-    public Semester1Fragment() {
+    public SemesterFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class Semester1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_semester1, container, false);
+        View view = inflater.inflate(R.layout.fragment_semester, container, false);
 
         TableLayout table = (TableLayout) view.findViewById(R.id.folderButtonTable);
         for (int row=0; row < NUM_ROWS; row++) {
