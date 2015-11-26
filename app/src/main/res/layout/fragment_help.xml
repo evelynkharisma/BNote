@@ -24,31 +24,4 @@
 
         </LinearLayout>
 
-        <!--<RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/help_title_gest"
-                android:text="Post Note"
-                android:clickable="true"
-                android:onClick="toggle_contents"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txt_help_gest"
-                android:text="clik on '+' button"
-                android:layout_below="@+id/help_title_gest" />
-        </RelativeLayout> -->
-
-
-
-
-
 </FrameLayout>
