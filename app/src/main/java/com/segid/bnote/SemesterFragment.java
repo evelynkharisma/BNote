@@ -34,7 +34,7 @@ public class SemesterFragment extends Fragment {
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.MATCH_PARENT, 100
             ));
-            //table.addView(tableRow);
+            table.addView(tableRow);
             for(int column=0; column < NUM_COLS; column++) {
                 Button folderButton = new Button(getActivity());
                 folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icons30, 0, 0, 0);
@@ -50,17 +50,17 @@ public class SemesterFragment extends Fragment {
                     }
                 });
 
-                //tableRow.addView(folderButton);
+                tableRow.addView(folderButton);
             }
             View line = new View(getActivity());
             TableRow.LayoutParams separatorLayoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 2);
             separatorLayoutParams.setMargins(100, 0, 0, 0);
             line.setBackgroundColor(Color.GRAY);
-            //table.addView(line, separatorLayoutParams);
+            table.addView(line, separatorLayoutParams);
 
             Space rowSpace = new Space(getActivity());
             rowSpace.setMinimumHeight(20);
-            //table.addView(rowSpace);
+            table.addView(rowSpace);
         }
 
         return view;

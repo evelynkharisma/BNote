@@ -2,26 +2,32 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.segid.bnote.Semester1Fragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SEMESTER LAYOUT"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/verticalScrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEMESTER LAYOUT"
+            android:id="@+id/semesterHeader"/>
 
-        <TableLayout
-            android:id="@+id/folderButtonTable"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="0dp"
-            android:stretchColumns="*"></TableLayout>
+        <ScrollView
+            android:id="@+id/verticalScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/semesterHeader">
 
-    </ScrollView>
+            <TableLayout
+                android:id="@+id/folderButtonTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
+                android:stretchColumns="*"></TableLayout>
 
+        </ScrollView>
+    </RelativeLayout>
 </FrameLayout>
