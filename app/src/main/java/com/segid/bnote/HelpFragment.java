@@ -96,8 +96,8 @@ public class HelpFragment extends Fragment {
             textView.setText(getGroup(i).toString());
             textView.setTextSize(20);
             textView.setPadding(20,5,0,10);
-            textView.setBackgroundColor(getResources().getColor(R.color.bnote_yellow));
-            textView.setTextColor(getResources().getColor(R.color.bnote_purple));
+            textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
+            textView.setTextColor(getResources().getColor(R.color.bnote_white));
             return textView;
         }
 
@@ -106,8 +106,8 @@ public class HelpFragment extends Fragment {
             TextView textView = new TextView(HelpFragment.this.getActivity());
             textView.setText(getChild(i, i1).toString());
             textView.setTextSize(15);
-            textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
-            textView.setTextColor(getResources().getColor(R.color.bnote_white));
+            //textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
+            //textView.setTextColor(getResources().getColor(R.color.bnote_white));
             textView.setPadding(30,15,0,15);
             return textView;
         }
