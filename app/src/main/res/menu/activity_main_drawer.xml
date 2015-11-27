@@ -3,10 +3,8 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_help" android:icon="@android:drawable/ic_menu_help"
             android:title="Help" />
-        <item android:id="@+id/nav_sharing" android:icon="@android:drawable/ic_menu_share"
-            android:title="Sharing" />
-        <item android:id="@+id/nav_support" android:icon="@android:drawable/ic_menu_call"
-            android:title="Support" />
+        <item android:id="@+id/nav_about" android:icon="@android:drawable/ic_menu_info_details"
+            android:title="About" />
         <item android:id="@+id/nav_setting" android:icon="@android:drawable/ic_menu_manage"
             android:title="Setting" />
     </group>
