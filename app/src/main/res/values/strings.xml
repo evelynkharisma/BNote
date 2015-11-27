@@ -25,6 +25,8 @@
     <string name="fragment_about">ABOUT</string>
     <string name="fragment_setting">SETTING</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_notes_list">NotesList</string>
+    <string name="title_activity_open_note">OpenNote</string>
+
 </resources>
