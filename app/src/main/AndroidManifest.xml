@@ -49,6 +49,11 @@
             android:label="@string/title_activity_open_note"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".Comment"
+            android:label="@string/title_activity_comment"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
