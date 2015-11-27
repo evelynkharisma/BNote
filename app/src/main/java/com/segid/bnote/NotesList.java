@@ -131,7 +131,8 @@ public class NotesList extends AppCompatActivity {
             for (int j=0; j<2; j++) {
                 LinearLayout ll = getFolder(R.drawable.rounded_rectangle, R.drawable.notes, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
 
-                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth, screenHeight/4, 1.0f);
+//                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,(int)(screenHeight*0.28), 1.0f);
+                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,screenHeight/4, 1.0f);
                 if (j==0) {
                     tblRowParam.setMarginEnd(40);
                 }
@@ -146,10 +147,11 @@ public class NotesList extends AppCompatActivity {
 
     public Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
         Bitmap sbmp;
-        if(bmp.getWidth() != radius || bmp.getHeight() != radius)
+        if(bmp.getWidth() != radius || bmp.getHeight() != radius) {
             sbmp = Bitmap.createScaledBitmap(bmp, radius, radius, false);
-        else
+        } else {
             sbmp = bmp;
+        }
         Bitmap output = Bitmap.createBitmap(sbmp.getWidth(),
                 sbmp.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
@@ -172,13 +174,41 @@ public class NotesList extends AppCompatActivity {
         return output;
     }
 
+
+    public Bitmap getCircleBitmap(Bitmap bmp, int radius) {
+        Bitmap sbmp;
+        if(bmp.getWidth() != radius || bmp.getHeight() != radius) {
+            sbmp = Bitmap.createScaledBitmap(bmp, radius, radius, false);
+        } else {
+            sbmp = bmp;
+        }
+        Bitmap output = Bitmap.createBitmap(sbmp.getWidth(),
+                sbmp.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xffa19774;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
+
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawCircle(sbmp.getWidth() / 2 + 0.7f, sbmp.getHeight() / 2 + 0.7f, sbmp.getWidth() / 2 + 0f, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(sbmp, rect, rect, paint);
+
+        return output;
+    }
+
     public LinearLayout getFolder(int backgroundDrawable, int notesImage, int userImage, int totalComment, String userName, String date, String desctiption, String time) {
         LinearLayout toReturn = new LinearLayout(this);
         toReturn.setOrientation(LinearLayout.VERTICAL);
         toReturn.setClickable(true);
 
-        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), notesImage);
-        Bitmap rounded = getCroppedBitmap(largeIcon, 500);
+        Bitmap noteImageBitmap = BitmapFactory.decodeResource(getResources(), notesImage);
+        Bitmap rounded = getCroppedBitmap(noteImageBitmap, 500);
         Drawable drawable=new BitmapDrawable(rounded);
         LinearLayout layoutImage = new LinearLayout(this);
         layoutImage.setBackground(drawable);
@@ -194,39 +224,43 @@ public class NotesList extends AppCompatActivity {
         LinearLayout layoutUserData = new LinearLayout(this);
 
         //user image
-        ImageView userImageView = new ImageView(this);
-        userImageView.setImageResource(userImage);
-        LinearLayout.LayoutParams userImageParam = new LinearLayout.LayoutParams(150,150);
-        userImageParam.setMarginStart(50);
-        userImageParam.setMargins(0, 50, 0, 0);
-        userImageView.setLayoutParams(userImageParam);
+        Bitmap userImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user);
+        Bitmap userImageRounded = getCircleBitmap(userImageBitmap, 70);
+        Drawable userImageDrawable=new BitmapDrawable(userImageRounded);
+        LinearLayout.LayoutParams userImageParam = new LinearLayout.LayoutParams((int)(screenWidth*0.10474),(int)(screenHeight*0.0579));
+        userImageParam.setMarginStart((int) (screenWidth * 0.0295));
+        userImageParam.setMargins(0, (int) (screenHeight * 0.02278), 0, (int) (screenHeight * 0.00589));
+//        LinearLayout.LayoutParams userImageParams = new LinearLayout.LayoutParams((int)(screenWidth*0.107), (int)(screenHeight*0.06));
+        Button btnUserImage = new Button(this);
+        btnUserImage.setLayoutParams(userImageParam);
+        btnUserImage.setBackground(userImageDrawable);
 
         // text username
         TextView txtUserName = new TextView(this);
-        LinearLayout.LayoutParams userNameParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        userNameParam.setMarginStart(35);
-        userNameParam.setMargins(0, 80, 0, 0);
+        LinearLayout.LayoutParams userNameParam = new LinearLayout.LayoutParams((int)(screenWidth*0.31065), (int)(screenHeight*0.0579));
+        userNameParam.setMarginStart((int) (screenWidth * 0.02059));
+        userNameParam.setMargins(0, (int) (screenHeight * 0.0246), 0, 0);
         txtUserName.setLayoutParams(userNameParam);
         txtUserName.setTextSize(17);
         txtUserName.setText(userName);
         txtUserName.setTextColor(Color.WHITE);
         txtUserName.setTypeface(txtUserName.getTypeface(), Typeface.BOLD);
 
-        layoutUserData.addView(userImageView);
+//        layoutUserData.addView(userImageView);
+        layoutUserData.addView(btnUserImage);
         layoutUserData.addView(txtUserName);
 
         //Text Descrpiption
         TextView txtDescription = new TextView(this);
-        LinearLayout.LayoutParams txtDescriptionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, screenHeight/9);
-        txtDescriptionParams.setMarginStart(50);
-        txtDescriptionParams.setMargins(0, 20, 0, 0);
+        LinearLayout.LayoutParams txtDescriptionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (int)(screenHeight*0.117));
+        txtDescriptionParams.setMarginStart((int) (screenWidth * 0.03312));
         txtDescription.setLayoutParams(txtDescriptionParams);
         txtDescription.setTextSize(16);
         txtDescription.setText(desctiption);
         txtDescription.setTextColor(Color.WHITE);
 
 
-        //        Dashed line
+        // Dashed line
         ImageView dashedLine = new ImageView(this);
         LinearLayout.LayoutParams dashedLineParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 6);
         dashedLineParams.setMarginStart(10);
@@ -240,8 +274,8 @@ public class NotesList extends AppCompatActivity {
         // text DATE and TIME
         TextView txtDate = new TextView(this);
         LinearLayout.LayoutParams dateParam = new LinearLayout.LayoutParams(screenWidth/4, LinearLayout.LayoutParams.WRAP_CONTENT);
-        dateParam.setMarginStart(40);
-        dateParam.setMargins(15, 15, 0, 15);
+        dateParam.setMarginStart((int)(screenWidth*0.0398));
+        dateParam.setMargins(0, 15, 0, 15);
         txtDate.setLayoutParams(dateParam);
         txtDate.setTextSize(12);
         txtDate.setText(date + ", " + time);
