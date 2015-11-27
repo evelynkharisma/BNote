@@ -2,6 +2,7 @@ package com.segid.bnote;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,23 @@ public class HelpFragment extends Fragment {
         ExpandableListView elv = (ExpandableListView) view.findViewById(R.id.list);
         elv.setAdapter(new SavedTabsListAdapter());
 
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+
+        elv.setIndicatorBoundsRelative(width - getDipsFromPixel(80), width - getDipsFromPixel(40));
         // Inflate the layout for this fragment
         return view;
     }
+
+    // Convert pixel to dip
+    public int getDipsFromPixel(float pixels) {
+        // Get the screen's density scale
+        final float scale = getResources().getDisplayMetrics().density;
+        // Convert the dps to pixels, based on density scale
+        return (int) (pixels * scale );
+    }
+
 
     public class SavedTabsListAdapter extends BaseExpandableListAdapter {
 
@@ -80,6 +95,7 @@ public class HelpFragment extends Fragment {
             TextView textView = new TextView(HelpFragment.this.getActivity());
             textView.setText(getGroup(i).toString());
             textView.setTextSize(20);
+            textView.setPadding(20,5,0,10);
             textView.setBackgroundColor(getResources().getColor(R.color.bnote_yellow));
             textView.setTextColor(getResources().getColor(R.color.bnote_purple));
             return textView;
@@ -90,7 +106,9 @@ public class HelpFragment extends Fragment {
             TextView textView = new TextView(HelpFragment.this.getActivity());
             textView.setText(getChild(i, i1).toString());
             textView.setTextSize(15);
-            textView.setPadding(20,5,0,0);
+            textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
+            textView.setTextColor(getResources().getColor(R.color.bnote_white));
+            textView.setPadding(30,15,0,15);
             return textView;
         }
 

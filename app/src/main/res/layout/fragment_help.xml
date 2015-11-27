@@ -17,7 +17,6 @@
             <ExpandableListView android:id="@+id/list"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
                 android:layout_marginTop="10dp"
                 android:divider="@color/bnote_purple"
                 android:dividerHeight="0.5dp"/>
