@@ -1,5 +1,6 @@
 package com.segid.bnote;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
@@ -94,7 +95,8 @@ public class HelpFragment extends Fragment {
         public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
             TextView textView = new TextView(HelpFragment.this.getActivity());
             textView.setText(getGroup(i).toString());
-            textView.setTextSize(20);
+            textView.setTextSize(15);
+            textView.setTypeface(null, Typeface.BOLD);
             textView.setPadding(20,5,0,10);
             textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
             textView.setTextColor(getResources().getColor(R.color.bnote_white));
@@ -105,7 +107,7 @@ public class HelpFragment extends Fragment {
         public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
             TextView textView = new TextView(HelpFragment.this.getActivity());
             textView.setText(getChild(i, i1).toString());
-            textView.setTextSize(15);
+            textView.setTextSize(12);
             //textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
             //textView.setTextColor(getResources().getColor(R.color.bnote_white));
             textView.setPadding(30,15,0,15);

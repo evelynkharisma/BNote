@@ -2,19 +2,174 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.segid.bnote.HelpFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/about_bnote_image"
+            android:src="@drawable/bnotes07"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fragment_about"
-            android:textSize="30dp"
-            android:textStyle="bold"/>
+            android:id="@+id/about_bnote_title"
+            android:text="@string/app_name"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_image"
+            android:layout_marginTop="10dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_version"
+            android:text="@string/about_version"
+            android:textSize="10dp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_title"
+            android:layout_marginTop="5dp"/>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_motto"
+            android:text="@string/about_motto"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_version"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_developer"
+            android:text="@string/about_developer"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_motto"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_cs_dept"
+            android:text="@string/about_team_cs_dept"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_developer"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_leader"
+            android:text="@string/about_team_leader"
+            android:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_cs_dept"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_cs_database"
+            android:text="@string/about_team_cs_database"
+            android:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_leader"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_cs_layout"
+            android:text="@string/about_team_cs_layout"
+            android:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_cs_database"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_and_dept"
+            android:text="@string/about_team_and_dept"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_cs_layout"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_and_icon"
+            android:text="@string/about_team_and_icon"
+            android:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_and_dept"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_bnote_team_and_logo"
+            android:text="@string/about_team_and_logo"
+            android:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/about_bnote_team_and_icon"
+            android:layout_marginTop="8dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_bnote_termofservice"
+                android:text="@string/about_termofservice"
+                android:textSize="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_bnote_privacypolicy"
+                android:text="@string/about_privacypolicy"
+                android:textSize="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:layout_toRightOf="@+id/about_bnote_termofservice" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_bnote_legalnotices"
+                android:text="@string/about_legalnotices"
+                android:textSize="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:layout_toRightOf="@+id/about_bnote_privacypolicy" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>
