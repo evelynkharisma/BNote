@@ -22,11 +22,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = null;
         Toolbar toolbar = null;
+        final Bundle bundle = new Bundle();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         SemesterFragment fragment = new SemesterFragment();
+        bundle.putInt("semester", 1);
+        fragment.setArguments(bundle);
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
@@ -69,6 +72,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",1);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
@@ -81,6 +86,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",2);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
@@ -93,6 +100,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",3);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
@@ -105,6 +114,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",4);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
@@ -117,6 +128,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",5);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
@@ -129,6 +142,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
+                bundle.putInt("semester",6);
+                fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
