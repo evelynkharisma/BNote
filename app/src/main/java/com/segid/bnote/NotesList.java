@@ -50,6 +50,12 @@ public class NotesList extends AppCompatActivity {
 
     private Point size;
 
+    private ArrayList<Integer> listNotes = new ArrayList<>();
+    private String intentUserName;
+    private int intentNoteImage;
+    private int data_counter;
+    private int noteImageInt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,27 +128,80 @@ public class NotesList extends AppCompatActivity {
     public void populateLinearLayout() {
         TableLayout table = (TableLayout) findViewById(R.id.tableThumbnail);
         int num_rows = 3;
-        int num_columns = 2;
+        final int num_columns = 2;
+        int row_counter = 0;
+        data_counter =0;
 
-        for (int i=0; i<3; i++) {
-            TableRow tableRow = new TableRow(this);
-            table.addView(tableRow);
+        listNotes.add(R.drawable.note1);
+        listNotes.add(R.drawable.note2);
+        listNotes.add(R.drawable.note3);
+        TableRow tableRow = new TableRow(this);
 
-            for (int j=0; j<2; j++) {
-                LinearLayout ll = getFolder(R.drawable.rounded_rectangle, R.drawable.notes, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
 
-//                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,(int)(screenHeight*0.28), 1.0f);
-                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,screenHeight/4, 1.0f);
-                if (j==0) {
-                    tblRowParam.setMarginEnd(40);
+        for(data_counter = 0; data_counter<listNotes.size(); data_counter++) {
+            noteImageInt= listNotes.get(data_counter);
+
+            LinearLayout.LayoutParams llParam = new LinearLayout.LayoutParams((int)(screenWidth*0.437), screenHeight/4);
+            LinearLayout ll = getFolder(R.drawable.rounded_rectangle, noteImageInt, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
+            ll.setLayoutParams(llParam);
+
+            TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth, screenHeight / 4, 1.0f);
+            if (row_counter == 0) {
+                tblRowParam.setMarginEnd(40);
+            }
+            tblRowParam.setMargins(0, 40, 0, 0);
+            ll.setLayoutParams(tblRowParam);
+
+            linearLayouts.add(ll);
+            intentNoteImage = data_counter;
+            linearLayouts.get(intentNoteImage).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), OpenNote.class);
+                    Bundle b = new Bundle();
+                    b.putInt("NoteImage", listNotes.get(intentNoteImage));
+                    b.putString("Username", "sjdjs");
+                    intent.putExtras(b);
+                    startActivity(intent);
                 }
-                tblRowParam.setMargins(0, 40, 0, 0);
-                ll.setLayoutParams(tblRowParam);
-                linearLayouts.add(ll);
-                linearlayoutID++;
+            });
+
+            linearlayoutID++;
+
+            if(row_counter==1) {
                 tableRow.addView(ll);
+                row_counter=0;
+            } else {
+                tableRow = new TableRow(this);
+                table.addView(tableRow);
+                tableRow.addView(ll);
+                row_counter++;
             }
         }
+
+
+
+
+//        TableLayout table = (TableLayout) findViewById(R.id.tableThumbnail);
+//        int num_rows = 3;
+//        int num_columns = 2;
+//
+//        for (int i=0; i<3; i++) {
+//            TableRow tableRow = new TableRow(this);
+//            table.addView(tableRow);
+//
+//            for (int j=0; j<2; j++) {
+//                LinearLayout ll = getFolder(R.drawable.rounded_rectangle, R.drawable.notes, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
+//                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,screenHeight/4, 1.0f);
+//                if (j==0) {
+//                    tblRowParam.setMarginEnd(40);
+//                }
+//                tblRowParam.setMargins(0, 40, 0, 0);
+//                ll.setLayoutParams(tblRowParam);
+//                linearLayouts.add(ll);
+//                linearlayoutID++;
+//                tableRow.addView(ll);
+//            }
+//        }
     }
 
     public Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
@@ -203,15 +262,18 @@ public class NotesList extends AppCompatActivity {
     }
 
     public LinearLayout getFolder(int backgroundDrawable, int notesImage, int userImage, int totalComment, String userName, String date, String desctiption, String time) {
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams((int)(screenWidth*0.437), screenHeight/4);
         LinearLayout toReturn = new LinearLayout(this);
         toReturn.setOrientation(LinearLayout.VERTICAL);
         toReturn.setClickable(true);
+        toReturn.setLayoutParams(param);
 
         Bitmap noteImageBitmap = BitmapFactory.decodeResource(getResources(), notesImage);
         Bitmap rounded = getCroppedBitmap(noteImageBitmap, 500);
         Drawable drawable=new BitmapDrawable(rounded);
         LinearLayout layoutImage = new LinearLayout(this);
         layoutImage.setBackground(drawable);
+        layoutImage.setLayoutParams(new LinearLayout.LayoutParams((int) (screenWidth * 0.437), screenHeight / 4));
 
         Bitmap btDarker = BitmapFactory.decodeResource(getResources(), R.drawable.darker);
         Bitmap roundedDarker = getCroppedBitmap(btDarker, 500);
