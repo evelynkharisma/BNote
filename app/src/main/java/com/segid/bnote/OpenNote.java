@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 public class OpenNote extends AppCompatActivity {
 
+    private Button btnBack;
     private Button btnNoteImage;
     private Button btnUserImage;
     private Button btnPurple;
@@ -94,6 +95,13 @@ public class OpenNote extends AppCompatActivity {
 
         screenHeight = size.y;
         screenWidth = size.x;
+
+        btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         LinearLayout.LayoutParams btnNoteImageParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int)(screenHeight*0.73));
         btnNoteImage = new Button(this);

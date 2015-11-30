@@ -28,6 +28,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class Comment extends AppCompatActivity {
+    private Button btnBack;
 
     private Display display;
 
@@ -60,6 +61,13 @@ public class Comment extends AppCompatActivity {
         display.getSize(size);
         screenHeight = size.y;
         screenWidth = size.x;
+
+        btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     public void createCommentingLayout(int numComment) {
@@ -103,7 +111,7 @@ public class Comment extends AppCompatActivity {
         ScrollView scrollComment = (ScrollView) findViewById(R.id.scrollComment);
         scrollComment.addView(linearLayout);
 
-        createCommentingLayout(2);
+//        createCommentingLayout(2);
     }
 
     public void populateComment(){

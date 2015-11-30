@@ -77,8 +77,8 @@ public class NotesList extends AppCompatActivity {
         btnPlus = (Button) findViewById(R.id.btn_plus);
         btnPlus.setVisibility(View.VISIBLE);
 
-        btnDots = (Button) findViewById(R.id.btn_dots);
-        btnDots = (Button)findViewById(R.id.btn_dots);
+        btnDots = (Button) findViewById(R.id.btn_back);
+        btnDots = (Button)findViewById(R.id.btn_back);
 
         btnID = 0;
 

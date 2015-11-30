@@ -17,7 +17,7 @@
             android:background="@color/bnote_yellow">
 
             <Button
-                android:id="@+id/btn_dots"
+                android:id="@+id/btn_back"
                 android:background="@drawable/icon_dots"
                 android:layout_gravity="left"
                 android:layout_height="30dp"
