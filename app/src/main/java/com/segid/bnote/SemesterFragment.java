@@ -3,12 +3,14 @@ package com.segid.bnote;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Space;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -27,7 +29,7 @@ public class SemesterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_semester, container, false);
+        final View view = inflater.inflate(R.layout.fragment_semester, container, false);
 
         TableLayout table = (TableLayout) view.findViewById(R.id.folderButtonTable);
 
@@ -85,8 +87,25 @@ public class SemesterFragment extends Fragment {
 
                     folderButton.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(), NotesList.class);
-                            startActivity(intent);
+                            ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
+                            progressBar.setVisibility(view.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(getActivity(), NotesList.class);
+                                    startActivity(intent);
+
+
+                                    this.finish();
+                                }
+
+                                private void finish() {
+                                    ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
+                                    progressBar.setVisibility(view.INVISIBLE);
+                                }
+                            }, 2000);
+
                         }
                     });
 
