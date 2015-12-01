@@ -129,28 +129,14 @@ public class NotesList extends AppCompatActivity {
     public void populateLinearLayout() {
         TableLayout table = (TableLayout) findViewById(R.id.tableThumbnail);
         int num_rows = 3;
-        final int num_columns = 2;
-        int row_counter = 0;
-        data_counter =0;
+        int num_columns = 2;
 
-        listNotes.add(R.drawable.note1);
-        listNotes.add(R.drawable.note2);
-        listNotes.add(R.drawable.note3);
-        listNotes.add(R.drawable.note1);
-        TableRow tableRow = new TableRow(this);
-
-        listUsersImage.add(R.drawable.user);
-        listUsersImage.add(R.drawable.user1);
-        listUsersImage.add(R.drawable.user2);
-        listUsersImage.add(R.drawable.user1);
-
-        for (int i=0; i<2; i++) {
-//            TableRow tableRow = new TableRow(this);
-            tableRow = new TableRow(this);
+        for (int i=0; i<3; i++) {
+            TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
 
             for (int j=0; j<2; j++) {
-                LinearLayout ll = getFolder(R.drawable.rounded_rectangle, listNotes.get(data_counter), listUsersImage.get(data_counter), 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
+                LinearLayout ll = getFolder(R.drawable.rounded_rectangle, R.drawable.notes, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
                 TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,screenHeight/4, 1.0f);
                 if (j==0) {
                     tblRowParam.setMarginEnd(40);
@@ -160,9 +146,9 @@ public class NotesList extends AppCompatActivity {
                 linearLayouts.add(ll);
                 linearlayoutID++;
                 tableRow.addView(ll);
-                data_counter++;
             }
         }
+    }
 
 //        TableLayout table = (TableLayout) findViewById(R.id.tableThumbnail);
 //        int num_rows = 3;
@@ -240,7 +226,7 @@ public class NotesList extends AppCompatActivity {
 //                tableRow.addView(ll);
 //            }
 //        }
-    }
+
 
     public Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
         Bitmap sbmp;
