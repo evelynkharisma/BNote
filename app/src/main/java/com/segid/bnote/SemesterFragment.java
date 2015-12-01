@@ -67,8 +67,6 @@ public class SemesterFragment extends Fragment {
 
         }
 
-        TextView textView = (TextView) view.findViewById(R.id.semester_layout);
-        textView.setText("Semester "+semester);
         if(courses.size() != 0)
         {
             for (int row=0; row < courses.size(); row++) {

@@ -28,6 +28,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class Comment extends AppCompatActivity {
+    private TextView toolbarTitle;
     private Button btnBack;
 
     private Display display;
@@ -61,6 +62,9 @@ public class Comment extends AppCompatActivity {
         display.getSize(size);
         screenHeight = size.y;
         screenWidth = size.x;
+
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("COMMENTS");
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {

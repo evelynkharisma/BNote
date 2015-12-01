@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 public class OpenNote extends AppCompatActivity {
 
+    private TextView toolbarTitle;
     private Button btnBack;
     private Button btnNoteImage;
     private Button btnUserImage;
@@ -95,6 +96,9 @@ public class OpenNote extends AppCompatActivity {
 
         screenHeight = size.y;
         screenWidth = size.x;
+
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("NOTE");
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {

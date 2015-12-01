@@ -25,8 +25,6 @@ public class SettingFragment extends Fragment {
 
     private LinearLayout settingLayout;
 
-    private TextView txtTitle;
-
     private Display display;
 
     private int screenWidth;
@@ -53,12 +51,7 @@ public class SettingFragment extends Fragment {
         settingLayout = (LinearLayout) view.findViewById(R.id.settingLayout);
 
         LinearLayout.LayoutParams titleParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (screenHeight / 10));
-        titleParam.setMargins(0, 25, 0, 0);
-        txtTitle = new TextView(getActivity());
-        txtTitle.setText("SETTINGS");
-        txtTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        txtTitle.setTextSize(25);
-        txtTitle.setLayoutParams(titleParam);
+
 
 
         btnAccountInfo = new Button(getActivity());
@@ -100,8 +93,6 @@ public class SettingFragment extends Fragment {
         btnWorkChat.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnWorkChat.setGravity(Gravity.LEFT);
         btnWorkChat.setGravity(Gravity.CENTER_VERTICAL);
-
-        settingLayout.addView(txtTitle);
 
         settingLayout.addView(btnAccountInfo);
         settingLayout.addView(getLine());

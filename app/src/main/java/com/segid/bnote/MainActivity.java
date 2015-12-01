@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
+        TextView textView = (TextView) findViewById(R.id.toolbar_page);
+        textView.setText("SEMESTER 1");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 1");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -91,6 +96,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 2");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -105,6 +112,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 3");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -119,6 +128,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 4");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -133,6 +144,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 5");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -147,6 +160,8 @@ public class MainActivity extends AppCompatActivity
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("SEMESTER 6");
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -197,16 +212,22 @@ public class MainActivity extends AppCompatActivity
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+            TextView textView = (TextView) findViewById(R.id.toolbar_page);
+            textView.setText("HELP");
         }  else if (id == R.id.nav_about) {
             AboutFragment fragment = new AboutFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+            TextView textView = (TextView) findViewById(R.id.toolbar_page);
+            textView.setText("ABOUT");
         }else if (id == R.id.nav_setting) {
             SettingFragment fragment = new SettingFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+            TextView textView = (TextView) findViewById(R.id.toolbar_page);
+            textView.setText("SETTINGS");
         }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -7,13 +7,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fragment_help"
-                android:textSize="25dp"
-                android:textStyle="bold"/>
-
             <ExpandableListView android:id="@+id/list"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
