@@ -24,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.nio.BufferUnderflowException;
+
 public class OpenNote extends AppCompatActivity {
 
     private TextView toolbarTitle;
@@ -61,13 +63,18 @@ public class OpenNote extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Bundle b = getIntent().getExtras();
+        String userName= b.getString("username");
+        int note = b.getInt("noteImage");
+        int userImage = b.getInt("userImage");
         initialize();
-        createUI();
+        createUI(userImage, note, userName);
     }
 
-    public void createUI() {
-        setImageButton(btnNoteImage, R.drawable.notes);
-        setText(16, txtUserName, "Teylor Suwift");
+    public void createUI(int userimage, int noteimage, String username) {
+        setCroppedImageButton(btnUserImage, userimage);
+        setImageButton(btnNoteImage, noteimage);
+        setText(16, txtUserName, username);
         setText(16, txtDescription, "Sequential Art - Comic Making Philosophy");
         topLayout.addView(btnUserImage);
         topLayout.addView(txtUserName);
@@ -99,6 +106,7 @@ public class OpenNote extends AppCompatActivity {
 
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText("NOTE");
+        toolbarTitle.setTextColor(getResources().getColor(R.color.bnote_white));
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -129,13 +137,10 @@ public class OpenNote extends AppCompatActivity {
         topLayout.setLayoutParams(topLayoutParams);
         topLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        Bitmap noteImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user);
-        Bitmap rounded = getCroppedBitmap(noteImageBitmap, 70);
-        Drawable drawable=new BitmapDrawable(rounded);
+
         LinearLayout.LayoutParams userImageParams = new LinearLayout.LayoutParams((int)(screenWidth*0.107), (int)(screenHeight*0.06));
         btnUserImage = new Button(this);
         btnUserImage.setLayoutParams(userImageParams);
-        btnUserImage.setBackground(drawable);
 
         LinearLayout.LayoutParams txtUserNameParams = new LinearLayout.LayoutParams((int)(screenWidth*0.369), (int)(screenHeight*0.0368));
         txtUserNameParams.setMarginStart(15);
@@ -210,6 +215,12 @@ public class OpenNote extends AppCompatActivity {
         return output;
     }
 
+    public void setCroppedImageButton(Button object, int notePict) {
+        Bitmap noteImageBitmap = BitmapFactory.decodeResource(getResources(), notePict);
+        Bitmap rounded = getCroppedBitmap(noteImageBitmap, 70);
+        Drawable drawable=new BitmapDrawable(rounded);
+        object.setBackground(drawable);
+    }
 
     public void setImageButton(Button object, int notePict) {
         object.setBackgroundResource(notePict);

@@ -77,7 +77,7 @@ public class SemesterFragment extends Fragment {
                 table.addView(tableRow);
                 for(int column=0; column < NUM_COLS; column++) {
                     Button folderButton = new Button(getActivity());
-                    folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icons30, 0, 0, 0);
+                    folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.bnotes33, 0, 0, 0);
                     folderButton.setText("      " + courses.get(row));
                     folderButton.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
                     folderButton.setGravity(Gravity.LEFT);

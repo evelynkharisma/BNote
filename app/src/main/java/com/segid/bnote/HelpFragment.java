@@ -109,6 +109,10 @@ public class HelpFragment extends Fragment {
             textView.setText(getChild(i, i1).toString());
             textView.setTextSize(12);
             textView.setPadding(25,20,0,15);
+
+            Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "FUTURA.ttf");
+            textView.setTypeface(font);
+
             return textView;
         }
 

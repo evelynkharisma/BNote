@@ -15,6 +15,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
@@ -32,8 +33,9 @@ import java.util.ArrayList;
 
 public class NotesList extends AppCompatActivity {
 
+    private TextView toolbarTitle;
     private Button btnCamera;
-    private Button btnDots;
+    private Button btnBack;
     private Button btnNotes;
     private Button btnImage;
     private Button btnPlus;
@@ -52,6 +54,8 @@ public class NotesList extends AppCompatActivity {
 
     private ArrayList<Integer> listNotes = new ArrayList<>();
     private ArrayList<Integer> listUsersImage = new ArrayList<>();
+    private ArrayList<String> listUsername = new ArrayList<>();
+    private ArrayList<String> listDescription= new ArrayList<>();
     private String intentUserName;
     private int intentNoteImage;
     private int data_counter;
@@ -84,8 +88,17 @@ public class NotesList extends AppCompatActivity {
         btnPlus = (Button) findViewById(R.id.btn_plus);
         btnPlus.setVisibility(View.VISIBLE);
 
-        btnDots = (Button) findViewById(R.id.btn_back);
-        btnDots = (Button)findViewById(R.id.btn_back);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("B-Notes");
+        toolbarTitle.setTextColor(getResources().getColor(R.color.bnote_white));
+
+        btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setBackground(getResources().getDrawable(R.drawable.bnotes37));
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         btnID = 0;
 
@@ -116,36 +129,91 @@ public class NotesList extends AppCompatActivity {
             }
         });
 
-        for (int i=0; i< linearLayouts.size(); i++) {
-            linearLayouts.get(i).setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(NotesList.this, OpenNote.class);
-                    startActivity(intent);
-                }
-            });
-        }
+
+        linearLayouts.get(0).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(NotesList.this, OpenNote.class);
+                Bundle b = new Bundle();
+                b.putString("username", listUsername.get(0));
+                b.putInt("userImage", listUsersImage.get(0));
+                b.putInt("noteImage", listNotes.get(0));
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        });
+
+        linearLayouts.get(1).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(NotesList.this, OpenNote.class);
+                Bundle b = new Bundle();
+                b.putString("username", listUsername.get(1));
+                b.putInt("userImage", listUsersImage.get(1));
+                b.putInt("noteImage", listNotes.get(1));
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        });
+
+        linearLayouts.get(2).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(NotesList.this, OpenNote.class);
+                Bundle b = new Bundle();
+                b.putString("username", listUsername.get(2));
+                b.putInt("userImage", listUsersImage.get(2));
+                b.putInt("noteImage", listNotes.get(2));
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        });
+
+//        for (int i=0; i< linearLayouts.size(); i++) {
+//            linearLayouts.get(i).setOnClickListener(new View.OnClickListener() {
+//                public void onClick(View v) {
+//                    Intent mIntent = new Intent(this, OpenNote.class);
+//                    Bundle mBundle = new Bundle();
+//                    mBundle.putString("username", listUsername.get(i));
+//                    mIntent.putExtras(mBundle);
+//                }
+//            });
+//        }
     }
 
     public void populateLinearLayout() {
         TableLayout table = (TableLayout) findViewById(R.id.tableThumbnail);
-        int num_rows = 3;
-        int num_columns = 2;
 
-        for (int i=0; i<3; i++) {
+        data_counter=0;
+
+        listUsername.add("Teylor Suwift");
+        listUsername.add("Hello Tester");
+        listUsername.add("Santa Claus");
+
+        listUsersImage.add(R.drawable.user);
+        listUsersImage.add(R.drawable.user1);
+        listUsersImage.add(R.drawable.user2);
+
+        listNotes.add(R.drawable.note1);
+        listNotes.add(R.drawable.note2);
+        listNotes.add(R.drawable.note3);
+
+        for (int i=0; i<2; i++) {
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
 
             for (int j=0; j<2; j++) {
-                LinearLayout ll = getFolder(R.drawable.rounded_rectangle, R.drawable.notes, R.drawable.bnotes07, 3, "Teylor Suwift", "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
-                TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth,screenHeight/4, 1.0f);
-                if (j==0) {
-                    tblRowParam.setMarginEnd(40);
+                if(data_counter<listUsername.size()) {
+                    LinearLayout ll = getFolder(R.drawable.rounded_rectangle, listNotes.get(data_counter), listUsersImage.get(data_counter), 3, listUsername.get(data_counter), "23/11/2015", "Sequential Art -  Comic Making Philosophy..", "8:39 AM");
+                    TableRow.LayoutParams tblRowParam = new TableRow.LayoutParams(screenWidth, screenHeight / 4, 1.0f);
+                    if (j == 0) {
+                        tblRowParam.setMarginEnd(40);
+                    }
+                    tblRowParam.setMargins(0, 40, 0, 0);
+                    ll.setLayoutParams(tblRowParam);
+                    linearLayouts.add(ll);
+
+                    linearlayoutID++;
+                    tableRow.addView(ll);
+                    data_counter++;
                 }
-                tblRowParam.setMargins(0, 40, 0, 0);
-                ll.setLayoutParams(tblRowParam);
-                linearLayouts.add(ll);
-                linearlayoutID++;
-                tableRow.addView(ll);
             }
         }
     }
@@ -310,7 +378,7 @@ public class NotesList extends AppCompatActivity {
         LinearLayout layoutUserData = new LinearLayout(this);
 
         //user image
-        Bitmap userImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user);
+        Bitmap userImageBitmap = BitmapFactory.decodeResource(getResources(), userImage);
         Bitmap userImageRounded = getCircleBitmap(userImageBitmap, 70);
         Drawable userImageDrawable=new BitmapDrawable(userImageRounded);
         LinearLayout.LayoutParams userImageParam = new LinearLayout.LayoutParams((int)(screenWidth*0.10474),(int)(screenHeight*0.0579));
@@ -327,7 +395,7 @@ public class NotesList extends AppCompatActivity {
         userNameParam.setMarginStart((int) (screenWidth * 0.02059));
         userNameParam.setMargins(0, (int) (screenHeight * 0.0246), 0, 0);
         txtUserName.setLayoutParams(userNameParam);
-        txtUserName.setTextSize(17);
+        txtUserName.setTextSize(15);
         txtUserName.setText(userName);
         txtUserName.setTextColor(Color.WHITE);
         txtUserName.setTypeface(txtUserName.getTypeface(), Typeface.BOLD);
@@ -341,7 +409,7 @@ public class NotesList extends AppCompatActivity {
         LinearLayout.LayoutParams txtDescriptionParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (int)(screenHeight*0.117));
         txtDescriptionParams.setMarginStart((int) (screenWidth * 0.03312));
         txtDescription.setLayoutParams(txtDescriptionParams);
-        txtDescription.setTextSize(16);
+        txtDescription.setTextSize(12);
         txtDescription.setText(desctiption);
         txtDescription.setTextColor(Color.WHITE);
 
@@ -362,7 +430,7 @@ public class NotesList extends AppCompatActivity {
         dateParam.setMarginStart((int)(screenWidth*0.0398));
         dateParam.setMargins(0, 15, 0, 15);
         txtDate.setLayoutParams(dateParam);
-        txtDate.setTextSize(12);
+        txtDate.setTextSize(9);
         txtDate.setText(date + ", " + time);
         txtDate.setTextColor(Color.WHITE);
 
@@ -370,7 +438,7 @@ public class NotesList extends AppCompatActivity {
         ImageView commentView = new ImageView(this);
         commentView.setImageResource(R.drawable.comment);
         LinearLayout.LayoutParams commentParam = new LinearLayout.LayoutParams(60,60);
-        commentParam.setMarginStart(80);
+        commentParam.setMarginStart(40);
         commentParam.setMargins(0, 15, 0, 20);
         commentView.setLayoutParams(commentParam);
 
