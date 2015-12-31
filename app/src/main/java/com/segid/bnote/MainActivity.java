@@ -1,5 +1,6 @@
 package com.segid.bnote;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
         TextView textView = (TextView) findViewById(R.id.toolbar_page);
         textView.setText("SEMESTER 1");
+        Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+        textView.setTypeface(font);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,6 +85,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 1");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -98,6 +103,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 2");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -114,6 +121,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 3");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -130,6 +139,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 4");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -146,6 +157,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 5");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -162,6 +175,8 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 TextView textView = (TextView) findViewById(R.id.toolbar_page);
                 textView.setText("SEMESTER 6");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -214,6 +229,8 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             TextView textView = (TextView) findViewById(R.id.toolbar_page);
             textView.setText("HELP");
+            Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+            textView.setTypeface(font);
         }  else if (id == R.id.nav_about) {
             AboutFragment fragment = new AboutFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -221,6 +238,8 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             TextView textView = (TextView) findViewById(R.id.toolbar_page);
             textView.setText("ABOUT");
+            Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+            textView.setTypeface(font);
         }else if (id == R.id.nav_setting) {
             SettingFragment fragment = new SettingFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -228,6 +247,8 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             TextView textView = (TextView) findViewById(R.id.toolbar_page);
             textView.setText("SETTINGS");
+            Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+            textView.setTypeface(font);
         }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

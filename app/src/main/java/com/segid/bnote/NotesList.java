@@ -91,6 +91,8 @@ public class NotesList extends AppCompatActivity {
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText("B-Notes");
         toolbarTitle.setTextColor(getResources().getColor(R.color.bnote_white));
+        Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+        toolbarTitle.setTypeface(font);
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setBackground(getResources().getDrawable(R.drawable.bnotes37));

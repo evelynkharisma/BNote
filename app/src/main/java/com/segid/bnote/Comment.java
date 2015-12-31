@@ -65,6 +65,9 @@ public class Comment extends AppCompatActivity {
 
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText("COMMENTS");
+        toolbarTitle.setTextSize(20);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+        toolbarTitle.setTypeface(font);
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +152,10 @@ public class Comment extends AppCompatActivity {
         TextView txtDate = new TextView(this);
         setText(12, txtDate, Typeface.DEFAULT, date + " " + time, Color.GRAY);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "FUTURA.ttf");
+        txtUserName.setTypeface(font);
+        txtDate.setTypeface(font);
+
         LinearLayout.LayoutParams verticalLayoutParams = new LinearLayout.LayoutParams((int)(screenWidth*0.846), ViewGroup.LayoutParams.WRAP_CONTENT);
         verticalLayoutParams.setMargins(0, (int) (screenHeight * 0.0302), 0, 0);
         verticalLayoutParams.setMarginStart((int) (screenWidth * 0.02));
@@ -172,6 +179,7 @@ public class Comment extends AppCompatActivity {
         txtDescription.setLayoutParams(txtDescriptionParam);
         setText(15, txtDescription, Typeface.DEFAULT, description, Color.BLACK);
 
+        txtDescription.setTypeface(font);
 
         View line = new View(this);
         LinearLayout.LayoutParams separatorLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2);

@@ -3,6 +3,7 @@ package com.segid.bnote;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.view.Menu;
@@ -35,7 +36,10 @@ public class LoginActivity extends Activity  {
 
         mSign_in=(ImageButton)findViewById(R.id.nim_sign_in_button);
         mNim=(EditText)findViewById(R.id.nim);
+        Typeface font = Typeface.createFromAsset(getAssets(), "FUTURA.ttf");
+        mNim.setTypeface(font);
         mPassword=(EditText)findViewById(R.id.password);
+        mPassword.setTypeface(font);
 
 
         mSign_in.setOnClickListener(new View.OnClickListener() {

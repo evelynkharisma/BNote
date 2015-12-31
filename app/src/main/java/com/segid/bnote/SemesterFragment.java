@@ -2,6 +2,7 @@ package com.segid.bnote;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -79,6 +80,9 @@ public class SemesterFragment extends Fragment {
                     Button folderButton = new Button(getActivity());
                     folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.bnotes33, 0, 0, 0);
                     folderButton.setText("      " + courses.get(row));
+                    folderButton.setTextSize(12);
+                    Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Arial Rounded Bold.ttf");
+                    folderButton.setTypeface(font);
                     folderButton.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
                     folderButton.setGravity(Gravity.LEFT);
                     folderButton.setGravity(Gravity.CENTER_VERTICAL);

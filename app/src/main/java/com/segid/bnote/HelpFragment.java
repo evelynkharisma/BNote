@@ -97,9 +97,13 @@ public class HelpFragment extends Fragment {
             textView.setText(getGroup(i).toString());
             textView.setTextSize(15);
             textView.setTypeface(null, Typeface.BOLD);
-            textView.setPadding(25,10,0,25);
+            textView.setPadding(25, 10, 0, 25);
             textView.setBackgroundColor(getResources().getColor(R.color.bnote_purple));
             textView.setTextColor(getResources().getColor(R.color.bnote_white));
+
+            Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "FUTURA.ttf");
+            textView.setTypeface(font);
+
             return textView;
         }
 

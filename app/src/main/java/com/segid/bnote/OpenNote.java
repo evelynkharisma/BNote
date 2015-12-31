@@ -106,7 +106,10 @@ public class OpenNote extends AppCompatActivity {
 
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText("NOTE");
+        toolbarTitle.setTextSize(24);
         toolbarTitle.setTextColor(getResources().getColor(R.color.bnote_white));
+        Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+        toolbarTitle.setTypeface(font);
 
         btnBack = (Button) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {

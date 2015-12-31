@@ -52,7 +52,7 @@ public class SettingFragment extends Fragment {
 
         LinearLayout.LayoutParams titleParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (screenHeight / 10));
 
-
+        Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "FUTURA.ttf");
 
         btnAccountInfo = new Button(getActivity());
         btnAccountInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_account_info_setting, 0, 0, 0);
@@ -61,6 +61,7 @@ public class SettingFragment extends Fragment {
         btnAccountInfo.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnAccountInfo.setGravity(Gravity.LEFT);
         btnAccountInfo.setGravity(Gravity.CENTER_VERTICAL);
+        btnAccountInfo.setTypeface(font);
 
         btnCamera = new Button(getActivity());
         btnCamera.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_camera_setting, 0, 0, 0);
@@ -69,6 +70,7 @@ public class SettingFragment extends Fragment {
         btnCamera.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnCamera.setGravity(Gravity.LEFT);
         btnCamera.setGravity(Gravity.CENTER_VERTICAL);
+        btnCamera.setTypeface(font);
 //
         btnNotebooks = new Button(getActivity());
         btnNotebooks.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_note_setting, 0, 0, 0);
@@ -77,6 +79,7 @@ public class SettingFragment extends Fragment {
         btnNotebooks.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnNotebooks.setGravity(Gravity.LEFT);
         btnNotebooks.setGravity(Gravity.CENTER_VERTICAL);
+        btnNotebooks.setTypeface(font);
 
         btnNotes = new Button(getActivity());
         btnNotes.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_notebook_setting, 0, 0, 0);
@@ -85,6 +88,7 @@ public class SettingFragment extends Fragment {
         btnNotes.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnNotes.setGravity(Gravity.LEFT);
         btnNotes.setGravity(Gravity.CENTER_VERTICAL);
+        btnNotes.setTypeface(font);
 
         btnWorkChat = new Button(getActivity());
         btnWorkChat.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_work_chat_setting, 0, 0, 0);
@@ -93,6 +97,7 @@ public class SettingFragment extends Fragment {
         btnWorkChat.setBackgroundColor(getResources().getColor(R.color.bnote_transparent_background));
         btnWorkChat.setGravity(Gravity.LEFT);
         btnWorkChat.setGravity(Gravity.CENTER_VERTICAL);
+        btnWorkChat.setTypeface(font);
 
         settingLayout.addView(btnAccountInfo);
         settingLayout.addView(getLine());
