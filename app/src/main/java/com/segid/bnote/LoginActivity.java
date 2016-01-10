@@ -23,11 +23,16 @@ import com.segid.bnote.R;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 public class LoginActivity extends Activity  {
     ImageButton mSign_in;
     EditText mNim;
     EditText mPassword;
+    final Bundle bundle = new Bundle();
+
+    private ArrayList<String> userid = new ArrayList<String>();
+    private ArrayList<String> userpass = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +46,30 @@ public class LoginActivity extends Activity  {
         mPassword=(EditText)findViewById(R.id.password);
         mPassword.setTypeface(font);
 
+        userid.add("userid");
+        userpass.add("password");
+
+        userid.add("studentid");
+        userpass.add("studentpass");
+
 
         mSign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mNim.getText().toString().equals("admin") &&
-
-                        mPassword.getText().toString().equals("admin")) {
+            for(int i=0; i<userid.size(); i++)
+            {
+                if(mNim.getText().toString().equals(userid.get(i)) && mPassword.getText().toString().equals(userpass.get(i))) {
+                    bundle.putString("userid", userid.get(i));
                     Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    Intent intentBundle = new Intent(LoginActivity.this, MainActivity.class);
+                    intentBundle.putExtras(bundle);
+                    startActivity(intentBundle);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
                 }
+            }
+
             }
         });
     }

@@ -34,39 +34,66 @@ public class SemesterFragment extends Fragment {
 
         TableLayout table = (TableLayout) view.findViewById(R.id.folderButtonTable);
 
-        Bundle bundle = this.getArguments();
+        final Bundle bundle = this.getArguments();
         int semester = bundle.getInt("semester");
+        String userid = bundle.getString("userid");
 
-        if(semester == 1){
-            courses.add("Artificial Intelligent");
-            courses.add("Multimedia Signal Processing");
-            courses.add("Operating System");
-            courses.add("Project Hatchery");
-            courses.add("Software Engineering");
-            courses.add("Parsing and Translation");
-        }
-        else if(semester == 2)
+        if(userid.equals("userid"))
         {
-            courses.add("Digital Animation");
-            courses.add("Graphic Design");
-            courses.add("History of Graphic Design");
-            courses.add("Pre-press and Printing");
-            courses.add("Screen Design Development");
-            courses.add("Typography");
-        }
-        else if(semester == 3)
-        {
-            courses.add("Audio Visual");
-            courses.add("Computer Network");
-            courses.add("Graphic Interactive Design");
-            courses.add("Multimedia");
-            courses.add("Object Oriented Programming");
-            courses.add("Programming Principle");
+            if(semester == 1){
+                courses.add("Artificial Intelligence");
+                courses.add("Multimedia Signal Processing");
+                courses.add("Operating System");
+                courses.add("Project Hatchery");
+                courses.add("Software Engineering");
+                courses.add("Parsing and Translation");
+            }
+            else if(semester == 2)
+            {
+                courses.add("Character Building");
+                courses.add("Computer Graphic");
+                courses.add("Enterprise Application");
+                courses.add("Ethical Hacking");
+                courses.add("Scripting Language");
+                courses.add("WebProgramming");
+            }
+            else if(semester == 3)
+            {
+                courses.add("Computer Network");
+                courses.add("Distributed System");
+                courses.add("Multimedia System");
+                courses.add("Object Oriented Programming");
+                courses.add("Programming Principle");
+            }
+            else
+            {
+
+            }
         }
         else
         {
+            if(semester == 1){
+                courses.add("Advertising");
+                courses.add("Digital Animation");
+                courses.add("Experimental Design");
+                courses.add("History of Arts");
+                courses.add("Sculpture Modeling");
+            }
+            else if(semester == 2)
+            {
+                courses.add("Character Building");
+                courses.add("Graphic Design");
+                courses.add("History of Graphic Design");
+                courses.add("Pre-press and Printing");
+                courses.add("Screen Design Development");
+                courses.add("Typography");
+            }
+            else
+            {
 
+            }
         }
+
 
         if(courses.size() != 0)
         {
@@ -77,7 +104,15 @@ public class SemesterFragment extends Fragment {
                 ));
                 table.addView(tableRow);
                 for(int column=0; column < NUM_COLS; column++) {
-                    Button folderButton = new Button(getActivity());
+                    final Button folderButton = new Button(getActivity());
+                    if(courses.get(row).equalsIgnoreCase("Character Building"))
+                    {
+                        folderButton.setId(1);
+                    }
+                    else
+                    {
+                        folderButton.setId(2);
+                    }
                     folderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.bnotes33, 0, 0, 0);
                     folderButton.setText("      " + courses.get(row));
                     folderButton.setTextSize(12);
@@ -95,9 +130,10 @@ public class SemesterFragment extends Fragment {
 
                                 @Override
                                 public void run() {
+                                    bundle.putInt("folderid", folderButton.getId());
                                     Intent intent = new Intent(getActivity(), NotesList.class);
+                                    intent.putExtras(bundle);
                                     startActivity(intent);
-
 
                                     this.finish();
                                 }

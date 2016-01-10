@@ -1,5 +1,6 @@
 package com.segid.bnote;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,9 +19,16 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
+    TextView dUsername;
+    TextView dUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        Intent intentExtras = getIntent();
+        Bundle bundleExtras = intentExtras.getExtras();
+        final String bundleUserid = bundleExtras.getString("userid");
 
         NavigationView navigationView = null;
         Toolbar toolbar = null;
@@ -31,6 +39,7 @@ public class MainActivity extends AppCompatActivity
 
         SemesterFragment fragment = new SemesterFragment();
         bundle.putInt("semester", 1);
+        bundle.putString("userid", bundleUserid);
         fragment.setArguments(bundle);
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -72,6 +81,18 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        dUsername = (TextView) findViewById(R.id.drawerusername);
+        if(bundleUserid.equals("userid"))
+        {
+            dUsername.setText("First User");
+        }
+        else
+        {
+            dUsername.setText("Second User");
+        }
+        dUserID = (TextView) findViewById(R.id.draweruserid);
+        dUserID.setText(bundleUserid);
+
         // Semester Button
         ImageButton semester1Button = (ImageButton) findViewById(R.id.nav_period1);
         semester1Button.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +100,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",1);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -97,6 +119,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",2);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -115,6 +138,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",3);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -133,6 +157,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",4);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -151,6 +176,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",5);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -169,6 +195,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 SemesterFragment fragment = new SemesterFragment();
                 bundle.putInt("semester",6);
+                bundle.putString("userid", bundleUserid);
                 fragment.setArguments(bundle);
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);

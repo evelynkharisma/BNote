@@ -185,17 +185,38 @@ public class NotesList extends AppCompatActivity {
 
         data_counter=0;
 
-        listUsername.add("Teylor Suwift");
-        listUsername.add("Hello Tester");
-        listUsername.add("Santa Claus");
+        Intent intentExtras = getIntent();
+        Bundle bundleExtras = intentExtras.getExtras();
+        int bundleCourse = bundleExtras.getInt("folderid");
 
-        listUsersImage.add(R.drawable.user);
-        listUsersImage.add(R.drawable.user1);
-        listUsersImage.add(R.drawable.user2);
+        if(bundleCourse == 1)
+        {
+            listUsername.add("Teylor Suwift");
+            listUsername.add("Hello Tester");
+            listUsername.add("Santa Claus");
 
-        listNotes.add(R.drawable.note1);
-        listNotes.add(R.drawable.note2);
-        listNotes.add(R.drawable.note3);
+            listUsersImage.add(R.drawable.user);
+            listUsersImage.add(R.drawable.user1);
+            listUsersImage.add(R.drawable.user2);
+
+            listNotes.add(R.drawable.note1);
+            listNotes.add(R.drawable.note2);
+            listNotes.add(R.drawable.note3);
+        }
+        else
+        {
+            listUsername.add("Teylor Suwift");
+            listUsername.add("Hello Tester");
+            listUsername.add("Santa Claus");
+
+            listUsersImage.add(R.drawable.user);
+            listUsersImage.add(R.drawable.user1);
+            listUsersImage.add(R.drawable.user2);
+
+            listNotes.add(R.drawable.note1);
+            listNotes.add(R.drawable.note2);
+            listNotes.add(R.drawable.note3);
+        }
 
         for (int i=0; i<2; i++) {
             TableRow tableRow = new TableRow(this);
