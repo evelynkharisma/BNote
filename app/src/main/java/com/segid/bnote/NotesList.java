@@ -16,8 +16,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 public class NotesList extends AppCompatActivity {
 
     private TextView toolbarTitle;
+    private ImageView imageTaken;
     private Button btnCamera;
     private Button btnBack;
     private Button btnNotes;
@@ -42,6 +45,8 @@ public class NotesList extends AppCompatActivity {
     private Boolean visible;
     private ArrayList<Button> buttons = new ArrayList<>();
     private ArrayList<LinearLayout> linearLayouts = new ArrayList<>();
+
+    private static final int CAM_REQ = 1313;
 
     private Display display;
 
@@ -78,6 +83,9 @@ public class NotesList extends AppCompatActivity {
     private void initialize() {
         btnCamera = (Button) findViewById(R.id.btn_camera);
         btnCamera.setVisibility(View.INVISIBLE);
+
+        imageTaken = (ImageView) findViewById(R.id.photoimage);
+        imageTaken.setVisibility(View.INVISIBLE);
 
         btnNotes = (Button) findViewById(R.id.btn_notes);
         btnNotes.setVisibility(View.INVISIBLE);
@@ -131,42 +139,24 @@ public class NotesList extends AppCompatActivity {
             }
         });
 
+        btnCamera.setOnClickListener(new btnTakePhotoClicker());
 
-        linearLayouts.get(0).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(NotesList.this, OpenNote.class);
-                Bundle b = new Bundle();
-                b.putString("username", listUsername.get(0));
-                b.putInt("userImage", listUsersImage.get(0));
-                b.putInt("noteImage", listNotes.get(0));
-                intent.putExtras(b); //Put your id to your next Intent
-                startActivity(intent);
-            }
-        });
 
-        linearLayouts.get(1).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(NotesList.this, OpenNote.class);
-                Bundle b = new Bundle();
-                b.putString("username", listUsername.get(1));
-                b.putInt("userImage", listUsersImage.get(1));
-                b.putInt("noteImage", listNotes.get(1));
-                intent.putExtras(b); //Put your id to your next Intent
-                startActivity(intent);
-            }
-        });
-
-        linearLayouts.get(2).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(NotesList.this, OpenNote.class);
-                Bundle b = new Bundle();
-                b.putString("username", listUsername.get(2));
-                b.putInt("userImage", listUsersImage.get(2));
-                b.putInt("noteImage", listNotes.get(2));
-                intent.putExtras(b); //Put your id to your next Intent
-                startActivity(intent);
-            }
-        });
+        for(int counter = 0; counter < listUsername.size(); counter++)
+        {
+            final int COUNTER = counter;
+            linearLayouts.get(counter).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(NotesList.this, OpenNote.class);
+                    Bundle b = new Bundle();
+                    b.putString("username", listUsername.get(COUNTER));
+                    b.putInt("userImage", listUsersImage.get(COUNTER));
+                    b.putInt("noteImage", listNotes.get(COUNTER));
+                    intent.putExtras(b); //Put your id to your next Intent
+                    startActivity(intent);
+                }
+            });
+        }
 
 //        for (int i=0; i< linearLayouts.size(); i++) {
 //            linearLayouts.get(i).setOnClickListener(new View.OnClickListener() {
@@ -178,6 +168,28 @@ public class NotesList extends AppCompatActivity {
 //                }
 //            });
 //        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == CAM_REQ)
+        {
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            imageTaken.setImageBitmap(thumbnail);
+            imageTaken.setVisibility(View.VISIBLE);
+        }
+    }
+
+    class btnTakePhotoClicker implements Button.OnClickListener
+    {
+        @Override
+        public void onClick (View v)
+        {
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, CAM_REQ);
+        }
     }
 
     public void populateLinearLayout() {
@@ -193,15 +205,12 @@ public class NotesList extends AppCompatActivity {
         {
             listUsername.add("Teylor Suwift");
             listUsername.add("Hello Tester");
-            listUsername.add("Santa Claus");
 
             listUsersImage.add(R.drawable.user);
             listUsersImage.add(R.drawable.user1);
-            listUsersImage.add(R.drawable.user2);
 
             listNotes.add(R.drawable.note1);
             listNotes.add(R.drawable.note2);
-            listNotes.add(R.drawable.note3);
         }
         else
         {
@@ -217,7 +226,8 @@ public class NotesList extends AppCompatActivity {
             listNotes.add(R.drawable.note2);
             listNotes.add(R.drawable.note3);
         }
-
+        Log.i("test: ", String.valueOf(listUsername.size()));
+        //for (int i=0; i<(int)Math.ceil(listUsername.size()/2); i++)
         for (int i=0; i<2; i++) {
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
