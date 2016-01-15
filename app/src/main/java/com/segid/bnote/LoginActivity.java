@@ -60,13 +60,11 @@ public class LoginActivity extends Activity  {
             {
                 if(mNim.getText().toString().equals(userid.get(i)) && mPassword.getText().toString().equals(userpass.get(i))) {
                     bundle.putString("userid", userid.get(i));
-                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
                     Intent intentBundle = new Intent(LoginActivity.this, MainActivity.class);
                     intentBundle.putExtras(bundle);
                     startActivity(intentBundle);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
                 }
             }
 

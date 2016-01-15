@@ -44,5 +44,7 @@
     <string name="title_activity_notes_list">NotesList</string>
     <string name="title_activity_open_note">OpenNote</string>
     <string name="title_activity_comment">Comment</string>
+    <string name="title_activity_addnote">Comment</string>
+    <string name="title_activity_add_note">AddNote</string>
 
 </resources>

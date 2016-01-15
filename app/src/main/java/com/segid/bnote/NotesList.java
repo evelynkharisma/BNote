@@ -1,6 +1,8 @@
 package com.segid.bnote;
 
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -14,7 +16,9 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +35,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NotesList extends AppCompatActivity {
@@ -46,7 +55,7 @@ public class NotesList extends AppCompatActivity {
     private ArrayList<Button> buttons = new ArrayList<>();
     private ArrayList<LinearLayout> linearLayouts = new ArrayList<>();
 
-    private static final int CAM_REQ = 1313;
+    private static final int REQUEST_CAMERA = 1313;
 
     private Display display;
 
@@ -141,6 +150,10 @@ public class NotesList extends AppCompatActivity {
 
         btnCamera.setOnClickListener(new btnTakePhotoClicker());
 
+        btnNotes.setOnClickListener(new btnAddNote());
+
+        btnImage.setOnClickListener(new btnGallery());
+
 
         for(int counter = 0; counter < listUsername.size(); counter++)
         {
@@ -171,14 +184,50 @@ public class NotesList extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == CAM_REQ)
-        {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageTaken.setImageBitmap(thumbnail);
-            imageTaken.setVisibility(View.VISIBLE);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CAMERA) {
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                File destination = new File(Environment.getExternalStorageDirectory(),
+                        System.currentTimeMillis() + ".jpg");
+                FileOutputStream fo;
+                try {
+                    destination.createNewFile();
+                    fo = new FileOutputStream(destination);
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //ivImage.setImageBitmap(thumbnail);
+            } /*else if (requestCode == SELECT_FILE) {
+                Uri selectedImageUri = data.getData();
+                String[] projection = {MediaStore.MediaColumns.DATA};
+                CursorLoader cursorLoader = new CursorLoader(this, selectedImageUri, projection, null, null,
+                        null);
+                Cursor cursor = cursorLoader.loadInBackground();
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+                cursor.moveToFirst();
+                String selectedImagePath = cursor.getString(column_index);
+                Bitmap bm;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(selectedImagePath, options);
+                final int REQUIRED_SIZE = 200;
+                int scale = 1;
+                while (options.outWidth / scale / 2 >= REQUIRED_SIZE
+                        && options.outHeight / scale / 2 >= REQUIRED_SIZE)
+                    scale *= 2;
+                options.inSampleSize = scale;
+                options.inJustDecodeBounds = false;
+                bm = BitmapFactory.decodeFile(selectedImagePath, options);
+                ivImage.setImageBitmap(bm);
+            }*/
         }
     }
 
@@ -188,7 +237,28 @@ public class NotesList extends AppCompatActivity {
         public void onClick (View v)
         {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(cameraIntent, CAM_REQ);
+            startActivityForResult(cameraIntent, REQUEST_CAMERA);
+        }
+    }
+
+    class btnAddNote implements Button.OnClickListener
+    {
+        @Override
+        public void onClick (View v)
+        {
+            Intent addNoteIntent = new Intent(NotesList.this, AddNote.class);
+            startActivity(addNoteIntent);
+        }
+    }
+
+    class btnGallery implements Button.OnClickListener
+    {
+        @Override
+        public void onClick (View v)
+        {
+            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/*");
+            //startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
         }
     }
 
