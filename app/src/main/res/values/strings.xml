@@ -46,5 +46,6 @@
     <string name="title_activity_comment">Comment</string>
     <string name="title_activity_addnote">Comment</string>
     <string name="title_activity_add_note">AddNote</string>
+    <string name="title_activity_image_picker">ImagePickerActivity</string>
 
 </resources>

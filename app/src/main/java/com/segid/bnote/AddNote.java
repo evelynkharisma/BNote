@@ -1,5 +1,6 @@
 package com.segid.bnote;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -47,10 +48,10 @@ public class AddNote extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save                                  // kalau LoginActivity.class gnti jdi NotesList.class bakal stop working berat soalnya
-                //Intent intent = new Intent(AddNote.this, LoginActivity.class);
-                //startActivity(intent);
-                onBackPressed();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("newNote", editText.getText());
+                setResult(Activity.RESULT_OK, returnIntent);
+                finish();
             }
         });
 
