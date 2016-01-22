@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     TextView dUsername;
     TextView dUserID;
+    ImageView pImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,6 +209,23 @@ public class MainActivity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
+
+        pImageView = (ImageView) findViewById(R.id.profile_picture);
+        pImageView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                SettingFragment fragment = new SettingFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+                TextView textView = (TextView) findViewById(R.id.toolbar_page);
+                textView.setText("PROFILE");
+                Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
+                textView.setTypeface(font);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
     }
 
     @Override
@@ -267,7 +286,7 @@ public class MainActivity extends AppCompatActivity
             textView.setText("ABOUT");
             Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
             textView.setTypeface(font);
-        }else if (id == R.id.nav_setting) {
+        }/*else if (id == R.id.nav_setting) {
             SettingFragment fragment = new SettingFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -276,7 +295,7 @@ public class MainActivity extends AppCompatActivity
             textView.setText("SETTINGS");
             Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
             textView.setTypeface(font);
-        }
+        }*/
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
