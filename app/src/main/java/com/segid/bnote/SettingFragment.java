@@ -71,6 +71,14 @@ public class SettingFragment extends Fragment{
 
         editText.setText("getUserName()");
 
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //user.setname
+                //user.setpic
+            }
+        });
+
         return view;
     }
 
