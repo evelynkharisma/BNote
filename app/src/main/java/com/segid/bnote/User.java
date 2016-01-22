@@ -1,5 +1,7 @@
 package com.segid.bnote;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 
 /**
@@ -8,12 +10,14 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String userid;
+    private Uri filepath;
     private ArrayList<String> courses;
 
-    public User(String username, String userid, ArrayList<String> courses)
+    public User(String username, String userid, Uri filepath, ArrayList<String> courses)
     {
         this.username = username;
         this.userid = userid;
+        this.filepath = filepath;
         this.courses = courses;
     }
 
@@ -31,6 +35,14 @@ public class User {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public Uri getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(Uri filepath) {
+        this.filepath = filepath;
     }
 
     public ArrayList<String> getCourses() {
