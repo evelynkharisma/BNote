@@ -2,12 +2,13 @@ package com.segid.bnote;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by User on 1/21/2016.
  */
-public class User {
+public class User implements Serializable{
     private String username;
     private String userid;
     private Uri filepath;
