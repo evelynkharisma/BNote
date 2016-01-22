@@ -280,6 +280,9 @@ public class MainActivity extends AppCompatActivity
             textView.setText("ABOUT");
             Typeface font = Typeface.createFromAsset(getAssets(), "Arial Rounded Bold.ttf");
             textView.setTypeface(font);
+        }else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }/*else if (id == R.id.nav_setting) {
             SettingFragment fragment = new SettingFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

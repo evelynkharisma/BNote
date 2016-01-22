@@ -14,13 +14,15 @@ public class User implements Serializable{
     private Uri filepath;
     private ArrayList<String> courses;
 
-    public User(String username, String userid, Uri filepath, ArrayList<String> courses)
+    private static final long serialVersionUID = 465489764;
+
+    /*public User(String username, String userid, Uri filepath, ArrayList<String> courses)
     {
         this.username = username;
         this.userid = userid;
         this.filepath = filepath;
         this.courses = courses;
-    }
+    }*/
 
     public String getUsername() {
         return username;
