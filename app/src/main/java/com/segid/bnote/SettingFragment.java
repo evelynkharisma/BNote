@@ -38,7 +38,7 @@ public class SettingFragment extends Fragment{
 
     private ImageView imageView;
     private EditText editText;
-    private ImageButton btnEdit;
+    private Button btnEdit;
 
     private Uri orgUri;
 
@@ -58,7 +58,7 @@ public class SettingFragment extends Fragment{
 
         imageView = (ImageView) view.findViewById(R.id.profile_picture);
         editText = (EditText) view.findViewById(R.id.change_name);
-        btnEdit = (ImageButton) view.findViewById(R.id.edit_button);
+        btnEdit = (Button) view.findViewById(R.id.edit_button);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +69,11 @@ public class SettingFragment extends Fragment{
             }
         });
 
+        editText.setText("getUserName()");
 
         return view;
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
