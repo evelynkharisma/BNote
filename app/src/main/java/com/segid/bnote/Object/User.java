@@ -1,18 +1,18 @@
-package com.segid.bnote;
+package com.segid.bnote.Object;
 
 import android.net.Uri;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by User on 1/21/2016.
+ * Created by janistan on 1/23/2016.
  */
-public class User implements Serializable{
+public class User {
     private String username;
     private String userid;
+    private String password;
     private Uri filepath;
-    private ArrayList<String> courses;
+    private ArrayList<Course> courses;
 
     private static final long serialVersionUID = 465489764;
 
@@ -24,6 +24,21 @@ public class User implements Serializable{
         this.courses = courses;
     }*/
 
+    public User() {
+        courses = new ArrayList<>();
+    }
+
+    public User(String id, String name, String pass) {
+        setUserid(id);
+        setUsername(name);
+        setPassword(pass);
+        courses = new ArrayList<>();
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
     public String getUsername() {
         return username;
     }
@@ -32,7 +47,15 @@ public class User implements Serializable{
         this.username = username;
     }
 
-    public String getUserid() {
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String pwd) {
+        this.password = pwd;
+    }
+
+    public String getUserId() {
         return userid;
     }
 
@@ -48,11 +71,12 @@ public class User implements Serializable{
         this.filepath = filepath;
     }
 
-    public ArrayList<String> getCourses() {
-        return courses;
+    public ArrayList<Course> getCourses() {
+        return this.courses;
     }
 
-    public void setCourses(ArrayList<String> courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
 }
+

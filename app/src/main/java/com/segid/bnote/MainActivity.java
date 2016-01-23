@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.segid.bnote.Object.Global;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,8 +28,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         Intent intentExtras = getIntent();
         Bundle bundleExtras = intentExtras.getExtras();
         final String bundleUserid = bundleExtras.getString("userid");
@@ -84,14 +84,15 @@ public class MainActivity extends AppCompatActivity
         });
 
         dUsername = (TextView) findViewById(R.id.drawerusername);
-        if(bundleUserid.equals("userid"))
-        {
-            dUsername.setText("First User");
-        }
-        else
-        {
-            dUsername.setText("Second User");
-        }
+        dUsername.setText(Global.user.getUsername());
+//        if(bundleUserid.equals("userid"))
+//        {
+//            dUsername.setText("First User");
+//        }
+//        else
+//        {
+//            dUsername.setText("Second User");
+//        }
         dUserID = (TextView) findViewById(R.id.draweruserid);
         dUserID.setText(bundleUserid);
 

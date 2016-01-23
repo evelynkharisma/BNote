@@ -10,10 +10,14 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.segid.bnote.Object.Global;
+import com.segid.bnote.Object.User;
+
 public class splashscreen extends Activity {
 
     //Set waktu lama splashscreen
     private static int splashInterval = 2000;
+    final Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +29,24 @@ public class splashscreen extends Activity {
         setContentView(R.layout.splashscreen);
 
         new Handler().postDelayed(new Runnable() {
-
-
             @Override
             public void run() {
-                // TODO Auto-generated method stub
-                Intent i = new Intent(splashscreen.this, LoginActivity.class);
-                startActivity(i);
+                Object user = ObjectRW.readObject(splashscreen.this, Global.FILE_NAME_USER);
 
+                Intent intent = null;
+                if(user == null) {
+                    if (Global.user == null) {
+                        Global.user = new User();
+                        intent = new Intent(splashscreen.this, LoginActivity.class);
+                    }
+                } else {
+                    Global.user = (User)user;
+                    bundle.putString("userid", Global.user.getUserId());
+                    intent = new Intent(splashscreen.this, MainActivity.class);
+                    intent.putExtras(bundle);
+                }
+
+                startActivity(intent);
 
                 //jeda selesai Splashscreen
                 this.finish();
@@ -40,10 +54,7 @@ public class splashscreen extends Activity {
 
             private void finish() {
                 // TODO Auto-generated method stub
-
             }
         }, splashInterval);
-
     };
-
 }

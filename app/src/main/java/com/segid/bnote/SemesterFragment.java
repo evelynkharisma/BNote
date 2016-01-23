@@ -17,10 +17,14 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.segid.bnote.Object.Course;
+import com.segid.bnote.Object.Global;
+
 import java.util.ArrayList;
 
 
 public class SemesterFragment extends Fragment {
+
 
     public SemesterFragment(){}
 
@@ -28,8 +32,7 @@ public class SemesterFragment extends Fragment {
     private static final int NUM_COLS = 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_semester, container, false);
 
         TableLayout table = (TableLayout) view.findViewById(R.id.folderButtonTable);
@@ -38,62 +41,70 @@ public class SemesterFragment extends Fragment {
         int semester = bundle.getInt("semester");
         String userid = bundle.getString("userid");
 
-        if(userid.equals("userid"))
-        {
-            if(semester == 1){
-                courses.add("Artificial Intelligence");
-                courses.add("Multimedia Signal Processing");
-                courses.add("Operating System");
-                courses.add("Project Hatchery");
-                courses.add("Software Engineering");
-                courses.add("Parsing and Translation");
-            }
-            else if(semester == 2)
-            {
-                courses.add("Character Building");
-                courses.add("Computer Graphic");
-                courses.add("Enterprise Application");
-                courses.add("Ethical Hacking");
-                courses.add("Scripting Language");
-                courses.add("WebProgramming");
-            }
-            else if(semester == 3)
-            {
-                courses.add("Computer Network");
-                courses.add("Distributed System");
-                courses.add("Multimedia System");
-                courses.add("Object Oriented Programming");
-                courses.add("Programming Principle");
-            }
-            else
-            {
+//        for (User usr : Global.listUsers) {
+//            if (usr.getUsername().equals(userid)) {
+//
+//            }
+//        }
 
-            }
-        }
-        else
-        {
-            if(semester == 1){
-                courses.add("Advertising");
-                courses.add("Digital Animation");
-                courses.add("Experimental Design");
-                courses.add("History of Arts");
-                courses.add("Sculpture Modeling");
-            }
-            else if(semester == 2)
-            {
-                courses.add("Character Building");
-                courses.add("Graphic Design");
-                courses.add("History of Graphic Design");
-                courses.add("Pre-press and Printing");
-                courses.add("Screen Design Development");
-                courses.add("Typography");
-            }
-            else
-            {
-
+        for (Course course : Global.user.getCourses()) {
+            if (course.getSemester() == semester) {
+                courses.add(course.getCourseName());
             }
         }
 
+
+
+//        if(userid.equals("userid"))
+//        {
+//            if(semester == 1){
+//                courses.add("Artificial Intelligence");
+//                courses.add("Multimedia Signal Processing");
+//                courses.add("Operating System");
+//                courses.add("Project Hatchery");
+//                courses.add("Software Engineering");
+//                courses.add("Parsing and Translation");
+//            }
+//            else if(semester == 2)
+//            {
+//                courses.add("Character Building");
+//                courses.add("Computer Graphic");
+//                courses.add("Enterprise Application");
+//                courses.add("Ethical Hacking");
+//                courses.add("Scripting Language");
+//                courses.add("WebProgramming");
+//            }
+//            else if(semester == 3)
+//            {
+//                courses.add("Computer Network");
+//                courses.add("Distributed System");
+//                courses.add("Multimedia System");
+//                courses.add("Object Oriented Programming");
+//                courses.add("Programming Principle");
+//            }
+//            else
+//            {
+//
+//            }
+//        }
+//        else {
+//            if (semester == 1) {
+//                courses.add("Advertising");
+//                courses.add("Digital Animation");
+//                courses.add("Experimental Design");
+//                courses.add("History of Arts");
+//                courses.add("Sculpture Modeling");
+//            } else if (semester == 2) {
+//                courses.add("Character Building");
+//                courses.add("Graphic Design");
+//                courses.add("History of Graphic Design");
+//                courses.add("Pre-press and Printing");
+//                courses.add("Screen Design Development");
+//                courses.add("Typography");
+//            } else {
+//
+//            }
+//        }
 
         if(courses.size() != 0)
         {
