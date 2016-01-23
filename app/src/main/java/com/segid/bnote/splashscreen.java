@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.segid.bnote.Object.Global;
 import com.segid.bnote.Object.User;
 
 public class splashscreen extends Activity {
@@ -28,6 +27,8 @@ public class splashscreen extends Activity {
 
         setContentView(R.layout.splashscreen);
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +42,7 @@ public class splashscreen extends Activity {
                     }
                 } else {
                     Global.user = (User)user;
-                    bundle.putString("userid", Global.user.getUserId());
+                    bundle.putString("userid", Global.user.getUserid());
                     intent = new Intent(splashscreen.this, MainActivity.class);
                     intent.putExtras(bundle);
                 }
@@ -54,7 +55,10 @@ public class splashscreen extends Activity {
 
             private void finish() {
                 // TODO Auto-generated method stub
+
             }
         }, splashInterval);
+
     };
+
 }

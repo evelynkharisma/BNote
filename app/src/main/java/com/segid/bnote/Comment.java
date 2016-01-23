@@ -22,10 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TableRow;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class Comment extends AppCompatActivity {
     private TextView toolbarTitle;

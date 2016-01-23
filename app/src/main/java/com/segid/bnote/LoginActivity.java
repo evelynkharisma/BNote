@@ -4,17 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.segid.bnote.Object.Course;
-import com.segid.bnote.Object.Global;
 import com.segid.bnote.Object.User;
 
 import java.util.ArrayList;
@@ -55,22 +52,22 @@ public class LoginActivity extends Activity  {
             public void onClick(View v) {
                 boolean successLogin = false;
                 for (int i =0; i < Global.listUsers.size(); i++) {
-                    if(mNim.getText().toString().equals(Global.listUsers.get(i).getUserId()) && mPassword.getText().toString().equals(Global.listUsers.get(i).getPassword())) {
+                    if(mNim.getText().toString().equals(Global.listUsers.get(i).getUserid()) && mPassword.getText().toString().equals(Global.listUsers.get(i).getPassword())) {
                         successLogin = true;
                         Global.user = Global.listUsers.get(i);
 
                         //save user logged in
                         ObjectRW.writeObject(LoginActivity.this, "user.ser", Global.user);
 
-                        bundle.putString("userid", Global.user.getUserId());
+                        bundle.putString("userid", Global.user.getUserid());
                         Intent intentBundle = new Intent(LoginActivity.this, MainActivity.class);
                         intentBundle.putExtras(bundle);
                         startActivity(intentBundle);
                     }
                 }
 
-                if (!successLogin) {
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+            if (!successLogin) {
+                Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -136,6 +133,27 @@ public class LoginActivity extends Activity  {
             tempUser.addCourse(new Course(3, "Multimedia Sytem"));
             tempUser.addCourse(new Course(3, "Object Oriented Programmming"));
             tempUser.addCourse(new Course(3, "Programming Principle"));
+
+            Global.listUsers.add(tempUser);
+        }
+        for (int i = 3; i < 6; i++) {
+            String userid = "userid" + i;
+            String username = "user's name " + i;
+            String pass = "pass" + i;
+            User tempUser = new User(userid, username, pass);
+
+            tempUser.addCourse(new Course(1, "Advertising"));
+            tempUser.addCourse(new Course(1, "Digital Animation"));
+            tempUser.addCourse(new Course(1, "Experimental Design"));
+            tempUser.addCourse(new Course(1, "History of Arts"));
+            tempUser.addCourse(new Course(1, "Sculpture Modeling"));
+//        //add course to smt 2
+            tempUser.addCourse(new Course(2, "Character Building"));
+            tempUser.addCourse(new Course(2, "Graphic Design"));
+            tempUser.addCourse(new Course(2, "History of Graphic Design"));
+            tempUser.addCourse(new Course(2, "Pre-press and Printing"));
+            tempUser.addCourse(new Course(2, "Screen Design Development"));
+            tempUser.addCourse(new Course(2, "Typography"));
 
             Global.listUsers.add(tempUser);
         }

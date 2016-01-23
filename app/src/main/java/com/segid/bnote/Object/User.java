@@ -2,12 +2,13 @@ package com.segid.bnote.Object;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by janistan on 1/23/2016.
+ * Created by User on 1/21/2016.
  */
-public class User {
+public class User implements Serializable{
     private String username;
     private String userid;
     private String password;
@@ -55,7 +56,7 @@ public class User {
         this.password = pwd;
     }
 
-    public String getUserId() {
+    public String getUserid() {
         return userid;
     }
 
@@ -79,4 +80,3 @@ public class User {
         this.courses = courses;
     }
 }
-

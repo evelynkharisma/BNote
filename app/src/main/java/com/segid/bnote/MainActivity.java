@@ -16,8 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.segid.bnote.Object.Global;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +26,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         Intent intentExtras = getIntent();
         Bundle bundleExtras = intentExtras.getExtras();
         final String bundleUserid = bundleExtras.getString("userid");

@@ -15,16 +15,13 @@ import android.widget.ProgressBar;
 import android.widget.Space;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.segid.bnote.Object.Course;
-import com.segid.bnote.Object.Global;
 
 import java.util.ArrayList;
 
 
 public class SemesterFragment extends Fragment {
-
 
     public SemesterFragment(){}
 
@@ -180,3 +177,4 @@ public class SemesterFragment extends Fragment {
         return view;
     }
 }
+

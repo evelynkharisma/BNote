@@ -7,14 +7,14 @@ import java.util.Date;
 /**
  * Created by janistan on 1/23/2016.
  */
-public class CommentNote {
+public class Comment {
 
     private String commentID;
     private String comment;
     private Uri filepath;
     private Date date;
 
-    public CommentNote(String id, String comment, Date date) {
+    public Comment(String id, String comment, Date date) {
         setCommentID(id);
         setComment(comment);
         setDate(date);

@@ -2,20 +2,21 @@ package com.segid.bnote.Object;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by janistan on 1/23/2016.
  */
-public class Note {
+public class Note implements Serializable{
     private String decsription;
     private String noteName;
     private String noteID;
     private String imagePath;
     private Uri filepath;
     private Date date;
-    private ArrayList<CommentNote> comments;
+    private ArrayList<Comment> comments;
 
     public Note() {}
 
@@ -47,7 +48,7 @@ public class Note {
         return this.date;
     }
 
-    public ArrayList<CommentNote> getComments() {
+    public ArrayList<Comment> getComments() {
         return this.comments;
     }
 
@@ -75,8 +76,11 @@ public class Note {
         this.date = commentDate;
     }
 
-    public void setComment(ArrayList<CommentNote> listComment) {
+    public void setComment(ArrayList<Comment> listComment) {
         this.comments = listComment;
     }
+
+
+
 
 }
