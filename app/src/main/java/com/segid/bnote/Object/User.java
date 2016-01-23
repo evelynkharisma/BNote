@@ -8,6 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by User on 1/21/2016.
  */
+
 public class User implements Serializable{
     private String username;
     private String userid;

@@ -108,7 +108,6 @@ public class ImagePickerActivity extends AppCompatActivity implements ImageChoos
             textViewFile.setText(originalFilePath);
         }
         populateData();
-
     }
 
     private void chooseImage() {

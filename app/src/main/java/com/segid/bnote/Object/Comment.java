@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * Created by janistan on 1/23/2016.
  */
+
 public class Comment {
 
     private String commentID;

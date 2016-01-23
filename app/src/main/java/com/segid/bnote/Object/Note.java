@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * Created by janistan on 1/23/2016.
  */
+
 public class Note implements Serializable{
     private String decsription;
     private String noteName;

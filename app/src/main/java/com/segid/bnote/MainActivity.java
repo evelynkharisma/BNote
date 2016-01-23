@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         Intent intentExtras = getIntent();
         Bundle bundleExtras = intentExtras.getExtras();
         final String bundleUserid = bundleExtras.getString("userid");

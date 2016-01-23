@@ -42,7 +42,6 @@ public class LoginActivity extends Activity  {
 //
 //        userid.add("studentid");
 //        userpass.add("studentpass");
-
         setUser();
 
 

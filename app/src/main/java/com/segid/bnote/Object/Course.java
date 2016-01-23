@@ -8,6 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by janistan on 1/23/2016.
  */
+
 public class Course implements Serializable {
     private int semester;
     private String courseName;

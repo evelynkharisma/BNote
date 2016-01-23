@@ -162,7 +162,6 @@ public class Comment extends AppCompatActivity {
         verticalLayout.addView(txtUserName);
         verticalLayout.addView(txtDate);
 
-
         LinearLayout.LayoutParams topLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout topLayout = new LinearLayout(this);
         topLayout.setLayoutParams(topLayoutParams);

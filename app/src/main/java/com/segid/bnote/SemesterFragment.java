@@ -51,7 +51,6 @@ public class SemesterFragment extends Fragment {
         }
 
 
-
 //        if(userid.equals("userid"))
 //        {
 //            if(semester == 1){

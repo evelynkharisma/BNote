@@ -26,7 +26,6 @@ public class ObjectRW {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static Object readObject(Context context, String fileName){

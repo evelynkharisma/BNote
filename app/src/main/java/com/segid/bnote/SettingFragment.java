@@ -88,7 +88,6 @@ public class SettingFragment extends Fragment {
         }
     }
 
-
     /*private void chooseImage() {
         chooserType = ChooserType.REQUEST_PICK_PICTURE;
         imageChooserManager = new ImageChooserManager(this,

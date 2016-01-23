@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class HelpFragment extends Fragment {
 
     public HelpFragment() {
-        // Required empty public constructor
+        // Required empty public constructor.
     }
 
     @Override

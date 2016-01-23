@@ -85,7 +85,6 @@ public class OpenNote extends AppCompatActivity {
         scrollLayout.addView(basicLayout);
 
 
-
         LinearLayout basicLayout = (LinearLayout) findViewById(R.id.basicLinearLayout);
         basicLayout.addView(btnNoteImage);
         basicLayout.addView(scrollLayout);

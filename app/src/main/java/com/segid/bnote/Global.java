@@ -13,5 +13,4 @@ public class Global {
     public static User user;
     public static Object object;
     public static String FILE_NAME_USER = "user.ser";
-
 }

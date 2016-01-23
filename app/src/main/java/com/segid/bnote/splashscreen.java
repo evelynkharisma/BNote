@@ -28,7 +28,6 @@ public class splashscreen extends Activity {
         setContentView(R.layout.splashscreen);
 
 
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

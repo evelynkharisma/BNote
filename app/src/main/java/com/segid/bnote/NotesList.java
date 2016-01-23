@@ -50,7 +50,6 @@ public class NotesList extends AppCompatActivity implements ImageChooserListener
     private ArrayList<Button> buttons = new ArrayList<>();
     private ArrayList<LinearLayout> linearLayouts = new ArrayList<>();
 
-
     private Display display;
 
     private int btnID;

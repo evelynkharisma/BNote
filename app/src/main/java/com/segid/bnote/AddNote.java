@@ -55,5 +55,4 @@ public class AddNote extends AppCompatActivity {
         });
 
     }
-
 }
